@@ -1,0 +1,30 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "twitter, spotify, and omdb packages.",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lance-Martin/liri-node-app.git"
+  },
+  "keywords": [
+    "twitter",
+    "spotify",
+    "omdb",
+    "npm"
+  ],
+  "author": "Lance Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lance-Martin/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/Lance-Martin/liri-node-app#readme",
+  "dependencies": {
+    "request": "^2.72.0",
+    "spotify": "^0.3.0",
+    "twitter": "^1.3.0"
+  }
+}
