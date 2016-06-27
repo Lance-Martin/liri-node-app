@@ -3,8 +3,29 @@ var spotify = require('spotify');
 var request = require('request');
 var twitter = require('twitter');
 var fs = require('fs');
+var key = require('./keys.js');
 switch (process.argv[2]) {
     case 'my-tweets':
+      var client = new twitter({
+        consumer_key: key.twitterKeys.consumer_key,
+        consumer_secret: key.twitterKeys.consumer_secret,
+        access_token_key: key.twitterKeys.access_token_key,
+        access_token_secret: key.twitterKeys.access_token_secret
+        });
+        client.get('statuses/user_timeline', {count: 20}, function(error, tweets, response){
+        if (!error) {
+          console.log(error);
+        }
+        console.log("======================");
+        console.log('');
+        console.log("Here's your last 20 tweets:");
+        console.log('');
+        for(var i = 0; i<tweets.length;i++){
+          console.log(tweets[i].text);
+          console.log("");
+        }
+        console.log("======================");
+      });
     break;
     case 'spotify-this-song':
       spotify.search({ type: 'track', query: process.argv[3] }, function(err, data) {
@@ -27,7 +48,7 @@ switch (process.argv[2]) {
       });
     break;
     case 'movie-this':
-      request('http://www.omdbapi.com/?t='+process.argv[3]+"&tomatoes=true", function (err, data) {
+      request('https://www.omdbapi.com/?t='+process.argv[3]+"&tomatoes=true", function (err, data) {
         if (!err && data.statusCode == 200) {
         console.log(err); // Show the HTML for the Google homepage.
         }
@@ -57,4 +78,5 @@ switch (process.argv[2]) {
       });
     break;
     case 'do-what-it-says':
+    break;
 }
