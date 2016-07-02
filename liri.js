@@ -28,7 +28,7 @@ function tweet(){
 }
 function movie(title) {
   request('https://www.omdbapi.com/?t='+title+"&tomatoes=true", function (err, data) {
-    if (!err && data.statusCode == 200) {
+    if (err !== null) {
     console.log(err);
     console.log("=======================");
     console.log("=======================");
@@ -74,7 +74,12 @@ function movie(title) {
     console.log('Rotten tomatoes url: '+info.tomatoURL);
     console.log("=======================");
     console.log("=======================");
-
+    file =
+    fs.appendFile('./changeLog.txt', "\nmovie title: "+ info.Title + ", Year Made: " + info.Year + ", IMDB Rating: "+ info.imdbRating, function(err){
+      if(err){
+        console.log(err);
+      }
+    });
   });
 }
 function music(song) {
@@ -109,6 +114,12 @@ function music(song) {
     console.log("=======================");
     console.log("=======================");
     }
+    fs.appendFile('./changeLog.txt', "\ntop result: "+ data.tracks.items[0].name + ", artist: " + data.tracks.items[0].artists[0].name + ", spotify link: "+ data.tracks.items[0].external_urls.spotify, function(err){
+      if(err){
+        console.log(err);
+      }
+    });
+
   });
 }
 switch (process.argv[2]) {
