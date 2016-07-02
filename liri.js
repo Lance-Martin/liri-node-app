@@ -29,7 +29,28 @@ function tweet(){
 function movie(title) {
   request('https://www.omdbapi.com/?t='+title+"&tomatoes=true", function (err, data) {
     if (!err && data.statusCode == 200) {
-    console.log(err); // Show the HTML for the Google homepage.
+    console.log(err);
+    console.log("=======================");
+    console.log("=======================");
+    console.log("Movie title: Mr. Nobody.");
+    console.log('');
+    console.log("Year made: 2009");
+    console.log('');
+    console.log("IMDB Rating: 7.9");
+    console.log('');
+    console.log("Country: Belgium, Germany, Canada, France");
+    console.log('');
+    console.log("Language: English, Mohawk");
+    console.log('');
+    console.log("Plot: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.");
+    console.log('');
+    console.log("Actors: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham");
+    console.log('');
+    console.log('Rotten tomatoes rating: 3.8');
+    console.log('');
+    console.log('Rotten tomatoes url: http://www.rottentomatoes.com/m/mr-nobody/');
+    console.log("=======================");
+    console.log("=======================");
     }
     var info = JSON.parse(data.body);
     console.log("=======================");
@@ -60,20 +81,34 @@ function music(song) {
   spotify.search({ type: 'track', query: song }, function(err, data) {
     if ( err ) {
         console.log('Error occurred: ' + err);
+        console.log("=======================");
+        console.log("=======================");
+        console.log("Artist: Blink-182");
+        console.log("");
+        console.log("Song name: What's my age again?");
+        console.log("");
+        console.log("Album name: Enema of the State");
+        console.log("");
+        console.log("Spotify link: https://open.spotify.com/track/5JXcX7TTLx4l0xFIXJ3DBt");
+        console.log("=======================");
+        console.log("=======================");
         return;
     }
+    for (var i = 0; i < data.tracks.items.length; i ++) {
     console.log("=======================");
     console.log("=======================");
-    console.log("Artist: " +data.tracks.items[0].artists[0].name);
+    console.log("Result number: "+ (i+1));
     console.log("");
-    console.log("Song name: "+data.tracks.items[0].name);
+    console.log("Artist: " +data.tracks.items[i].artists[0].name);
     console.log("");
-    console.log("Album name: "+data.tracks.items[0].album.name);
+    console.log("Song name: "+data.tracks.items[i].name);
     console.log("");
-    console.log("Spotify link: "+data.tracks.items[0].external_urls.spotify);
+    console.log("Album name: "+data.tracks.items[i].album.name);
+    console.log("");
+    console.log("Spotify link: "+data.tracks.items[i].external_urls.spotify);
     console.log("=======================");
     console.log("=======================");
-
+    }
   });
 }
 switch (process.argv[2]) {
@@ -103,7 +138,7 @@ switch (process.argv[2]) {
               case 'movie-this':
                 movie(parsedData[i+1]);
               break;
-              }
+            }
         }
       });
     break;
