@@ -1,6 +1,6 @@
 # liri-node-app
 ## LIRI is a language interpretation and recognition interface
-#### LIRI can: Retrieve your last 20 tweets, search any song and retrieve the stats and a spotify link for the top twenty results, and can give you a movie description for any movie you search.  
+#### LIRI can: Retrieve your last 20 tweets, search any song to retrieve the stats along with a spotify link for the top twenty results, and can give you a movie description for any movie you search.  
 ###### To get LIRI ready for use follow these steps:
 ###### Make sure you have node.js installed.
 ###### 1. Clone this repository.
